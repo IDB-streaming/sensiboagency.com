@@ -1,0 +1,91 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: NAME
+  namespace: NAMESPACE
+spec:
+  selector:
+    app: NAME
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: NAME
+  namespace: NAMESPACE
+  labels:
+    app: NAME
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: NAME
+  template:
+    metadata:
+      labels:
+        app: NAME
+    spec:
+      imagePullSecrets:
+        - name: harbor-registry
+      containers:
+        - name: NAME
+          image: HARBOR_REGISTRY
+          readinessProbe:
+            httpGet:
+              path: /health.php
+              port: 80
+            initialDelaySeconds: 60
+            timeoutSeconds: 5
+            periodSeconds: 30
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /health.php
+              port: 80
+            initialDelaySeconds: 60
+            timeoutSeconds: 5
+            periodSeconds: 30
+            failureThreshold: 3
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              memory: "20Mi"
+              cpu: "0.001"
+            limits:
+              memory: "50Mi"
+              cpu: "0.04"
+      nodeSelector:
+        streaming: "true"
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: NAME-ingress
+  namespace: NAMESPACE
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: quickpassdigital.com # Ex: newrancher.marah.mobi
+      http:
+        paths:
+          - path: / # Ex: /
+            pathType: ImplementationSpecific # Ex: ImplementationSpecific
+            backend:
+              service:
+                name: NAME
+                # name: test
+                port:
+                  number: 80
+
+  tls:
+    - secretName: NAME-tls # Ex: web-marah-mobi-tls
+      hosts:
+        - quickpassdigital.com # Ex: newrancher.marah.mobi
