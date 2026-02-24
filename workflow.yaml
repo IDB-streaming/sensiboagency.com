@@ -1,0 +1,200 @@
+# Workflow used to build the image of the website and upload it to harbor
+# 1.- Rename this file to workflow.yaml
+# 2.- Change the values enclosed by <>
+
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  name: -workflow- # desde sensor
+  namespace: argo
+spec:
+  onExit: onexit
+  nodeSelector:
+    # kubernetes.io/hostname: "pool-28vq3qy5j-q5vzm"   # to allow parallel jobs (volumes in digitalocean does not allow ReadWriteMany)
+    argo: "true"
+  ttlStrategy:
+    secondsAfterCompletion: 3000 # Time to live after workflow is completed, replaces ttlSecondsAfterFinished
+    secondsAfterSuccess: 300 # Time to live after workflow is successful
+    #secondsAfterFailure: 60     # Time to live after workflow fails
+  arguments:
+    parameters:
+      - name: repo
+        value: github.com/ # desde sensor
+      - name: event
+        value: "XXXXXX" # desde sensor
+      - name: ref
+        value: "XXXXXX" # desde sensor (refs/heads/main)
+      - name: state
+        value: "XXXXXX" # desde sensor (pull request state)
+      - name: branch
+        value: "XXXXXX" # main (argopreview only to check the migration)
+      - name: fullname
+        value: github.com/
+
+      ####################################################################################################
+      #
+      # Values to change
+      #
+      ####################################################################################################
+      - name: image_name
+        value: streaming/stream-quickpassdigital-com # <------- Ex: landing-pages/za-sts-landingpage (landing-pages is the project in harbor, it must be created before)
+      - name: name
+        value: stream-quickpassdigital-com # <------- Ex: sts-landingpage
+      - name: namespace
+        value: streaming # <------- Ex: za-sts
+
+  entrypoint: website-template
+  # We use a volume claim template so that we can have a shared workspace.
+  VolumeClaimGC:
+    strategy: "OnWorkflowSuccess"
+  volumeClaimTemplates:
+    - metadata:
+        name: repository
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 5Gi
+  templates:
+    ######################################################################################################
+    #
+    # push-main -> commits to main branch, merge from pull requests or changes in github.
+    #              It does everything: clone, maven build and deploy
+    # pull-request -> pull requests. Same as push-main but doesn't deploy anything
+    #
+    ######################################################################################################
+    - name: website-template
+      dag:
+        tasks:
+          - name: harbor-registry
+            templateRef:
+              name: wft-harbor-registry
+              template: secret-harbor-registry
+            arguments:
+              parameters:
+                - name: namespace
+                  value: "{{workflow.parameters.namespace}}"
+          - name: push-main
+            template: push-main
+            when: "{{workflow.parameters.event}} == 'push' && ({{workflow.parameters.ref}} == 'main' || {{workflow.parameters.ref}} == 'argopreview')"
+          - name: pull-request
+            template: pull-request
+            when: "{{workflow.parameters.event}} == 'pull_request'"
+
+    #####################################################################################################
+    #
+    # push-main definitions
+    #
+    #####################################################################################################
+    - name: push-main
+      dag:
+        tasks:
+          - name: clone-main
+            templateRef:
+              name: wft-clone-main-ssh
+              template: clone-main-ssh
+            arguments:
+              parameters:
+                - name: repo
+                  value: "{{workflow.parameters.repo}}"
+                - name: branch
+                  value: "{{workflow.parameters.branch}}"
+          - name: build-main
+            templateRef:
+              name: wft-build-main
+              template: build-main
+            arguments:
+              parameters:
+                - name: name
+                  value: "{{workflow.parameters.name}}"
+                - name: image_name
+                  value: "{{workflow.parameters.image_name}}"
+                - name: image_tag
+                  value: "{{tasks.clone-main.outputs.parameters.image_tag}}"
+            depends: "clone-main"
+          - name: deploy-deployment
+            templateRef:
+              name: wft-kubectl-apply
+              template: kubectl-apply
+            arguments:
+              parameters:
+                - name: yaml-file
+                  value: "deployment.yaml" # <------- Ex: deployment.yaml
+                - name: image_name
+                  value: "{{workflow.parameters.image_name}}"
+                - name: image_tag
+                  value: "{{tasks.clone-main.outputs.parameters.image_tag}}"
+                - name: name
+                  value: "{{workflow.parameters.name}}"
+                - name: namespace
+                  value: "{{workflow.parameters.namespace}}"
+            depends: "build-main"
+
+    #####################################################################################################
+    #
+    # pull-request definitions
+    #
+    ##################################################################################################
+    - name: pull-request
+      dag:
+        tasks:
+          - name: clone-pull
+            templateRef:
+              name: wft-clone-pull-ssh
+              template: clone-pull-ssh
+            arguments:
+              parameters:
+                - name: repo
+                  value: "{{workflow.parameters.repo}}"
+                - name: branch
+                  value: "{{workflow.parameters.branch}}"
+          - name: build-pull
+            templateRef:
+              name: wft-build-pull
+              template: build-pull
+            arguments:
+              parameters:
+                - name: name
+                  value: "{{workflow.parameters.name}}"
+                - name: image_name
+                  value: "{{workflow.parameters.image_name}}"
+                - name: image_tag
+                  value: "{{tasks.clone-pull.outputs.parameters.image_tag}}"
+            depends: "clone-pull"
+
+    - name: onexit
+      container:
+        image: coreharbor-new.idbmobile.tools/proxy_dockerhub/alpine/curl:3.14
+        volumeMounts:
+          - name: repository
+            mountPath: /repository
+        workingDir: /repository
+        securityContext:
+          privileged: true
+        env:
+          - name: USERNAMEGITHUB
+            valueFrom:
+              secretKeyRef:
+                name: github-commit-token
+                key: username
+          - name: PASSWORDGITHUB
+            valueFrom:
+              secretKeyRef:
+                name: github-commit-token
+                key: password
+        command:
+          - /bin/sh
+          - -c
+          - |
+            STATUS=$(echo {{workflow.status}} | sed 's/Succeeded/success/g')
+            STATUS=$(echo $STATUS | sed 's/Failed/failure/g')
+            STATUS=$(echo $STATUS | sed 's/Error/error/g')
+            STATUS="\"$STATUS\""
+            echo {{workflow.failures}}
+            TARGET_URL=https://argo-server.idbmobile.tools/workflows/argo/$(echo {{workflow.name}})/?tab=workflow
+            TARGET_URL="\"$TARGET_URL\""
+            SHA=$(cat repository/sha.txt)
+            REPO=$(echo {{workflow.parameters.fullname}} | sed 's/github.com/https:\/\/api.github.com\/repos/g')
+            API_URL=$REPO/statuses/$SHA
+            LLAMADA="curl -i -H \"authorization: token $PASSWORDGITHUB\" -H \"Accept: application/vnd.github.v3+json\" $API_URL -d '{\"state\":$STATUS, \"target_url\":$TARGET_URL}'"
+            eval $LLAMADA

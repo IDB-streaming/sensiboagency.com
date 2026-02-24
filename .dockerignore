@@ -1,0 +1,9 @@
+.git
+README.md
+.DS_Store
+.env
+node_modules
+workflow.yaml
+deployment.yaml
+.idea
+.vscode
