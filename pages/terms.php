@@ -9,7 +9,7 @@
                 offered by Quickpass Digital. Quickpass Digital, located at Orfeos 2B, 3rd floor,
                 Flat/Office
                 201-302, 1070, Nicosia, Cyprus, will be referred to as "Company," "we," "us," or "our" henceforth. When you
-                browse the website <a href="https://www.quickpassdigital.com">quickpassdigital.com</a> and use the Services
+                browse the website <a href="https://www.sensiboagency.com">sensiboagency.com</a> and use the Services
                 provided,
                 you acquire the status of a user.
             </p>
@@ -100,7 +100,7 @@
                 Quickpass Digital<br>
                 Orfeos 2B, 3rd floor, Flat/Office 201-302<br>
                 1070, Nicosia, Cyprus<br>
-                Email: <a href="mailto:info@quickpassdigital.com">info@quickpassdigital.com</a>
+                Email: <a href="mailto:info@sensiboagency.com">info@sensiboagency.com</a>
             </address>
         </div>
     </div>

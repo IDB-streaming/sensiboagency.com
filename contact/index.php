@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>quickpassdigital</title>
+  <title>sensiboagency</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
   <link rel="stylesheet" href="../assets/css/style.css" />
@@ -55,7 +55,7 @@
         <img src="../assets/images/logo_footer.svg" alt="Logo Footer" />
         <h4>Get in Touch</h4>
         <div class="link-item">
-          <span>Email:</span><a href="mailto:info@quickpassdigital.com">info@quickpassdigital.com</a>
+          <span>Email:</span><a href="mailto:info@sensiboagency.com">info@sensiboagency.com</a>
         </div>
         <div class="link-item"><span>Phone:</span><a href="tel:0035722007463">+35 722 00 74 63</a></div>
         <div class="link-item">

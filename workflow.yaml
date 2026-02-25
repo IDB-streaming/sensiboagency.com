@@ -37,9 +37,9 @@ spec:
       #
       ####################################################################################################
       - name: image_name
-        value: streaming/stream-quickpassdigital-com # <------- Ex: landing-pages/za-sts-landingpage (landing-pages is the project in harbor, it must be created before)
+        value: streaming/stream-sensiboagency-com # <------- Ex: landing-pages/za-sts-landingpage (landing-pages is the project in harbor, it must be created before)
       - name: name
-        value: stream-quickpassdigital-com # <------- Ex: sts-landingpage
+        value: stream-sensiboagency-com # <------- Ex: sts-landingpage
       - name: namespace
         value: streaming # <------- Ex: za-sts
 
