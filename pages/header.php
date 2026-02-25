@@ -6,7 +6,7 @@
             </a>
 
             <ul class="main-nav">
-                <li><a href="index.php?page=the-company" data-discover="true">The Company</a></li>
+                <li><a href="index.php?page=about-us" data-discover="true">About Us</a></li>
                 <li><a href="index.php?page=services" data-discover="true">Services</a></li>
                 <li><a href="index.php?page=contact" data-discover="true">Contact us</a></li>
             </ul>
@@ -22,7 +22,7 @@
 
         <nav class="mobile-navigation-menu ">
             <ul class="mobile-navigation-list">
-                <li><a href="index.php?page=the-company" data-discover="true">The Company</a></li>
+                <li><a href="index.php?page=about-us" data-discover="true">About Us</a></li>
                 <li><a href="index.php?page=services" data-discover="true">Services</a></li>
                 <li><a href="index.php?page=contact" data-discover="true">Contact us</a></li>
             </ul>

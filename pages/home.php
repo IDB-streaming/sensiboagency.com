@@ -1,41 +1,94 @@
 <section class="hero-home">
     <div class="container">
         <div class="hero-content">
-            <h1>Smart Traffic.<br>
-                <span>Real Conversions.</span><br>
-                Scalable Growth.<br>
-            </h1>
-            <hr>
-            <p class="intro-text">Your gateway to smart digital advertising, affiliate solutions and customer support excellence in an increasingly connected world.</p>
-        </div>
+            <h2>Welcome to Sensibo Agency</h2>
+            <h1>Where performance meets possibility.</h1>
 
-        <div class="video-container">
-            <img src="assets/images/logo_header.svg" alt="logo" class="video-logo">
-            <video autoplay muted loop playsinline>
-                <source src="assets/images/globe-home-video.webm" type="video/webm">
-                Your browser does not support the video tag.
-            </video>
+            <p class="intro-text">Empowering brands through data-driven advertising, innovative affiliate partnerships, and customer support excellence in a digitally connected era.</p>
         </div>
 </section>
 
 <section class="section">
-    <div class="container d-flex gap-5 mobile-column">
+    <div class="container d-flex gap-100 flex-column">
         <div class="pic-container">
-            <img src="assets/images/welcome-pic.jpg" alt="Smartphone" />
+            <img src="assets/images/business-team-collaborating.jpg" alt="Business Team Colaborating" />
         </div>
 
-        <div class="text-container d-flex flex-column gap-4">
-            <h2 class="large-text">We power <span>performance-driven marketing</span>, trusted partnerships, and results-oriented solutions. </h2>
-            <hr>
-            <p class="intro-text">From mobile value-added services to multilingual customer support, our platforms are engineered for impact, conversion and growth.</p>
+        <div class="text-container d-flex equal-children mobile-column gap-100">
+            <div>
+                <p>In today's hyper-connected world, digital success isn't just about visibility — it's about precision, partnership, and measurable growth.</p>
+                <p>At Sensibo Agency, we deliver smart digital advertising, high-converting affiliate solutions, and world-class customer support designed to accelerate your business forward.</p>
+            </div>
+
+            <div>
+                <p>From mobile value-added services and CPA campaigns to multilingual customer experience solutions, our platforms are built for impact, conversion, and long-term profitability. Whether you're an advertiser aiming to optimize every dollar spent or a publisher ready to monetize global traffic streams, Sensibo Agency provides the expertise, tools, and reach to help you scale faster.</p>
+            </div>
         </div>
     </div>
 </section>
 
-<section class="home-cards">
+<section class="section">
+    <div class="container">
+        <h2 class="mb-5 title">Our <span>Services</span></h2>
+    </div>
+
+    <ul class="item-list colors">
+        <li>
+            <div class="container">
+                <span>01</span>
+                <span>|</span>
+                <h4>Performance Advertising & Growth Marketing</h4>
+                <img src="assets/images/performance-advertising-&-growth-marketing.jpg" alt="performance advertising & growth marketing">
+            </div>
+        </li>
+        <li>
+            <div class="container">
+                <span>02</span>
+                <span>|</span>
+                <h4>Publisher Growth & Revenue Acceleration</h4>
+                <img src="assets/images/publisher-growth-&-revenue-acceleration.jpg" alt="Publisher Growth & Revenue Acceleration">
+            </div>
+        </li>
+        <li>
+            <div class="container">
+                <span>03</span>
+                <span>|</span>
+                <h4>Multilingual Customer Experience & Support Solutions</h4>
+                <img src="assets/images/multilingual-customer-experience-&-support-solutions.jpg" alt="Multilingual Customer Experience & Support Solutions">
+            </div>
+        </li>
+        <li>
+            <div class="container">
+                <span>04</span>
+                <span>|</span>
+                <h4>Digital Strategy, Funnel Optimization & Consulting</h4>
+                <img src="assets/images/digital-strategy,-funnel-optimization-&-consulting.jpg" alt="Digital Strategy, Funnel Optimization & Consulting">
+            </div>
+        </li>
+        <li>
+            <div class="container">
+                <span>05</span>
+                <span>|</span>
+                <h4>Data Analytics & Performance Intelligence</h4>
+                <img src="assets/images/data-analytics-&-performance-intelligence.jpg" alt="Data Analytics & Performance Intelligence">
+            </div>
+        </li>
+        <li>
+            <div class="container">
+                <span>06</span>
+                <span>|</span>
+                <h4>Market Expansion & Localization Services</h4>
+                <img src="assets/images/market-expansion-&-localization-services.jpg" alt="Market Expansion & Localization Services">
+            </div>
+        </li>
+    </ul>
+    </div>
+</section>
+
+<section class="section home-cards">
     <div class="home-card">
-        <img src="assets/images/icon-market.svg" alt="Icon Markets" />
-        <p>Operating across 50+ global markets, we connect brands with worldwide, delivering localized targeting with international scale.</p>
+        <img src="assets/images/icon-globe.svg" alt="Icon Markets" />
+        <p>We operate across more than 50 international markets, combining precise local targeting with the power of global scale.</p>
         <div class="info">
             <h3>50+</h3>
             <span>Markets</span>
@@ -44,63 +97,34 @@
 
     <div class="home-card">
         <img src="assets/images/icon-people.svg" alt="Icon Employees" />
-        <p>Powered by a team of 100+ experienced professionals dedicated to delivering performance, innovation, and client success.</p>
+        <p>Over 80 experienced professionals bring together expertise in  affiliate growth, data analytics and customer experience</p>
         <div class="info">
-            <h3>100+</h3>
+            <h3>80+</h3>
             <span>Employees</span>
         </div>
     </div>
 
     <div class="home-card">
-        <img src="assets/images/icon-globe.svg" alt="Icon Affiliates" />
-        <p>Partnering with 200+ active affiliates to scale campaigns efficiently across multiple markets and verticals.</p>
+        <img src="assets/images/icon-money.svg" alt="Icon Sales" />
+        <p>With over 11 million confirmed sales powered by performance-driven strategies, our track record speaks for itself.</p>
         <div class="info">
-            <h3>200+</h3>
-            <span>Affiliates</span>
+            <h3>11m+</h3>
+            <span>Sales</span>
         </div>
     </div>
 
     <div class="home-card">
-        <img src="assets/images/icon-sales.svg" alt="Icon Sales" />
-        <p>Over 12 million successful sales generated through performance-driven campaigns and optimized traffic strategies.</p>
+        <img src="assets/images/icon-clock.svg" alt="Icon Clock" />
+        <p>Our technology and account management teams work around the clock to monitor, analyze, and optimize campaigns in real time</p>
         <div class="info">
-            <h3>12M+</h3>
-            <span>Sales</span>
+            <h3>24/7</h3>
+            <span>monitoring</span>
         </div>
     </div>
 </section>
 
-<section class="section top-border no-padding-bottom">
-    <div class="container d-flex mobile-column">
-        <h2 class="turned-title">Our Services</h2>
-
-        <ul class="item-list">
-            <li>
-                <span>01</span>
-                <h4>Advertising & Affiliate Network Solutions</h4>
-                <p>We help advertisers tap into powerful monetization channels with   optimized performance-based campaigns.</p>
-            </li>
-            <li>
-                <span>02</span>
-                <h4>Publisher & Monetization Services</h4>
-                <p>We provide publishers with monetization solutions that maximize revenue and enhance user engagement across multiple platforms.</p>
-            </li>
-            <li>
-                <span>03</span>
-                <h4>Global Customer Support Services</h4>
-                <p>We offer 24/7 multilingual customer support, ensuring seamless communication and satisfaction for our global clientele.</p>
-            </li>
-            <li>
-                <span>04</span>
-                <h4>Consulting & Strategy</h4>
-                <p>We are specialized in strategic consulting services to help businesses achieve sustainable growth in competitive markets.</p>
-            </li>
-        </ul>
-    </div>
-</section>
-
-<section class="section black-bck padding-bottom-large">
+<section class="section dark-bck">
     <div class="container">
-        <h2 class="large-text text-center">Discover how Quickpass Digital can drive your business forward with <span>smart traffic</span>, <span>real conversions</span>, and <span>scalable growth</span>.</h2>
+        <h2 class="large-text text-center">We empower brands, advertisers, and publishers with <span>performance-driven strategies</span> that maximize ROI and unlock scalable growth.</h2>
     </div>
 </section>

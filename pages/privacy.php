@@ -8,10 +8,10 @@
                     Quickpass Digital (referred to as "Company," "we," "us," or "our") offers this Privacy Policy to
                     outline
                     our procedures for gathering, utilizing, and sharing information from individuals who visit our website at
-                    <a href="https://www.quickpassdigital.com">quickpassdigital.com</a> (referred to as the "website") and utilize any
+                    <a href="https://www.sensiboagency.com">sensiboagency.com</a> (referred to as the "website") and utilize any
                     associated
                     services. For more information about our company, please visit <a
-                        href="https://www.quickpassdigital.com">quickpassdigital.com</a>.
+                        href="https://www.sensiboagency.com">sensiboagency.com</a>.
                 </p>
                 <p>
                     We understand your concern regarding the usage and sharing of your information and are dedicated to
@@ -108,7 +108,7 @@
                     terminate the account and delete all the personal information as quickly as possible. If you believe that we
                     might have
                     any information from anyone under 18, please contact Customer Support:
-                    <a href="mailto:info@quickpassdigital.com">info@quickpassdigital.com</a>.
+                    <a href="mailto:info@sensiboagency.com">info@sensiboagency.com</a>.
                 </p>
             </div>
         
@@ -138,7 +138,7 @@
                     Quickpass Digital<br>
                     Orfeos 2B, 3rd floor, Flat/Office 201-302<br>
                     1070, Nicosia, Cyprus<br>
-                    Email: <a href="mailto:info@quickpassdigital.com">info@quickpassdigital.com</a>
+                    Email: <a href="mailto:info@sensiboagency.com">info@sensiboagency.com</a>
                 </address>
                 <p>We will respond to your inquiry as soon as possible.</p>
             </div>

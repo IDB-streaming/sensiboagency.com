@@ -73,7 +73,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: quickpassdigital.com # Ex: newrancher.marah.mobi
+    - host: sensiboagency.com # Ex: newrancher.marah.mobi
       http:
         paths:
           - path: / # Ex: /
@@ -88,4 +88,4 @@ spec:
   tls:
     - secretName: NAME-tls # Ex: web-marah-mobi-tls
       hosts:
-        - quickpassdigital.com # Ex: newrancher.marah.mobi
+        - sensiboagency.com # Ex: newrancher.marah.mobi
