@@ -3,7 +3,7 @@ define("DOMAIN_CMS", "moira.club");
 define("DOMAIN", "sensiboagency.com");
 define("EMAIL", "info@sensiboagency.com");
 define("SUBJECT", "Contact sensiboagency.com");
-define("PASSWORD", 'mwseoOU820&e$thdjKKdl2');
+define("PASSWORD", 'djGDjkqi9184%yejk&hdg');
 define("APIURL", "https://cms-cache-api.d1b.pw/");
 define("APIURL_NOCACHE", "https://cms-nocache-api.d1b.pw/");
 define("STORAGE", "https://cms.d1b.pw/storage/");
