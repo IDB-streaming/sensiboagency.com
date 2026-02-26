@@ -22,7 +22,7 @@
             if (isset($_GET['mail']) && $_GET['mail'] == "true") {
             ?>
 
-                <div class="alert alert-success">
+                <div class="alert alert-success mt-4">
                     <strong>Success!</strong> Message sent succesfully.
                 </div>
 
